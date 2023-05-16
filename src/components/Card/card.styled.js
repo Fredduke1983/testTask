@@ -1,0 +1,102 @@
+import styled from 'styled-components';
+
+const CardBody = styled.div`
+  position: relative;
+  width: 380px;
+  height: 460px;
+  background: linear-gradient(
+    114.99deg,
+    #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
+  box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
+  border-radius: 20px;
+`;
+
+const ImgLogo = styled.img`
+  position: absolute;
+  display: block;
+
+  left: 20px;
+  top: 20px;
+  opacity: 0.3;
+`;
+
+const BgPicture = styled.img`
+  position: absolute;
+  display: block;
+
+  top: 28px;
+  left: 36px;
+`;
+const Line = styled.img`
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+`;
+
+const Boy = styled.img`
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+`;
+
+const CardFooter = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+const CounterList = styled.ul`
+  display: grid;
+  gap: 16px;
+`;
+
+const Counter = styled.li`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #ebd8ff;
+  min-width: 220px;
+`;
+
+const Button = styled.button`
+  display: block;
+  margin: 26px auto 36px auto;
+  width: 196px;
+  height: 50px;
+  background: #ebd8ff;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #373737;
+`;
+
+export {
+  Button,
+  CardBody,
+  ImgLogo,
+  BgPicture,
+  Line,
+  Boy,
+  CardFooter,
+  Counter,
+  CounterList,
+};
