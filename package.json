@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://Fredduke1983.github.io/testtask/",
   "scripts": {
     "dev": "vite",
     "start": "npm run dev",
