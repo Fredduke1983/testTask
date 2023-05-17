@@ -9,10 +9,10 @@ import {
   ImgLogo,
   Line,
 } from './card.styled';
-import logo from '../../img/logoGoit.png';
-import bg from '../../img/bgpicture.png';
-import line from '../../img/centerLine.png';
-import boy from '../../img/boy.png';
+import logo from './img/logoGoit.png';
+import bg from './img/bgpicture.png';
+import line from './img/centerLine.png';
+import boy from './img/boy.png';
 
 export const Card = () => {
   return (
