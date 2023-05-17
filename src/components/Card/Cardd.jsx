@@ -14,7 +14,7 @@ import bg from './img/bgpicture.png';
 import line from './img/centerLine.png';
 import boy from './img/boy.png';
 
-export const Card = () => {
+export const Cardd = () => {
   return (
     <CardBody>
       <ImgLogo src={logo} />
