@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import {
   BgPicture,
   FrameCircle,
-  Button,
+  BtnFollow,
+  BtnFollowing,
   CardBody,
   CardFooter,
   Counter,
@@ -15,8 +17,14 @@ import bg from './img/bgpicture.png';
 import line from './img/centerLine.png';
 import frame from './img/frame.png';
 
-// eslint-disable-next-line react/prop-types
-export const Card = ({ avatar, tweets, followers }) => {
+const Cards = ({ avatar, tweets, followers, id }) => {
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const handleOnClick = e => {
+    setIsFollowing(!isFollowing);
+    console.log(id);
+  };
+
   return (
     <CardBody>
       <ImgLogo src={logo} />
@@ -30,8 +38,14 @@ export const Card = ({ avatar, tweets, followers }) => {
           <Counter>{followers} Followers</Counter>
         </CounterList>
 
-        <Button>Follow</Button>
+        {isFollowing ? (
+          <BtnFollow onClick={handleOnClick}>Follow</BtnFollow>
+        ) : (
+          <BtnFollowing onClick={handleOnClick}>Following</BtnFollowing>
+        )}
       </CardFooter>
     </CardBody>
   );
 };
+
+export { Cards };

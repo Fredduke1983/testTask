@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Card } from '../components/Card/Card';
-import { getUsers } from '../utils/fetches';
+import { Cards } from '../../components/Card/Card';
+import { getUsers } from '../../utils/fetches';
+import { UsersStyle } from './Users.styled';
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -12,23 +13,23 @@ function Users() {
       });
     }
   }, [users.length]);
-  console.log(users);
+
   return (
     <>
-      <ul>
+      <UsersStyle>
         {users &&
           users.map(user => {
             return (
-              <Card
+              <Cards
                 key={user.id}
+                id={user.id}
                 avatar={user.avatar}
                 tweets={user.tweets}
                 followers={user.followers}
               />
             );
           })}
-      </ul>
-      {/* <Card /> */}
+      </UsersStyle>
     </>
   );
 }

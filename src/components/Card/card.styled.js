@@ -88,7 +88,26 @@ const Counter = styled.li`
   min-width: 220px;
 `;
 
-const Button = styled.button`
+const BtnFollow = styled.button`
+  display: block;
+  margin: 26px auto 36px auto;
+  width: 196px;
+  height: 50px;
+  background: #ebd8ff;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #373737;
+`;
+
+const BtnFollowing = styled.button`
   display: block;
   margin: 26px auto 36px auto;
   width: 196px;
@@ -108,7 +127,6 @@ const Button = styled.button`
 `;
 
 export {
-  Button,
   CardBody,
   ImgLogo,
   BgPicture,
@@ -118,4 +136,6 @@ export {
   Counter,
   CounterList,
   Avatar,
+  BtnFollow,
+  BtnFollowing,
 };
