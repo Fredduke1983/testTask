@@ -30,7 +30,7 @@ const BgPicture = styled.img`
   top: 28px;
   left: 36px;
 `;
-const Line = styled.img`
+const LineStyle = styled.img`
   position: absolute;
   display: block;
   width: 100%;
@@ -38,13 +38,31 @@ const Line = styled.img`
   transform: translateY(-50%);
 `;
 
-const Boy = styled.img`
+const FrameCircle = styled.img`
   position: absolute;
   display: block;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+
+  border-radius: 50%;
+
+  width: 80px;
+  height: 80px;
+`;
+const Avatar = styled.img`
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  z-index: 1;
+
+  border-radius: 50%;
+
+  width: 60px;
+  height: 60px;
 `;
 
 const CardFooter = styled.div`
@@ -94,9 +112,10 @@ export {
   CardBody,
   ImgLogo,
   BgPicture,
-  Line,
-  Boy,
+  LineStyle,
+  FrameCircle,
   CardFooter,
   Counter,
   CounterList,
+  Avatar,
 };

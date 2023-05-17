@@ -1,30 +1,33 @@
 import {
   BgPicture,
-  Boy,
+  FrameCircle,
   Button,
   CardBody,
   CardFooter,
   Counter,
   CounterList,
   ImgLogo,
-  Line,
+  LineStyle,
+  Avatar,
 } from './card.styled';
 import logo from './img/logoGoit.png';
 import bg from './img/bgpicture.png';
 import line from './img/centerLine.png';
-import boy from './img/boy.png';
+import frame from './img/frame.png';
 
-export const Cardd = () => {
+// eslint-disable-next-line react/prop-types
+export const Card = ({ avatar, tweets, followers }) => {
   return (
     <CardBody>
       <ImgLogo src={logo} />
       <BgPicture src={bg} />
-      <Line src={line} />
-      <Boy src={boy} />
+      <LineStyle src={line} />
+      <Avatar src={avatar} />
+      <FrameCircle src={frame} />
       <CardFooter>
         <CounterList>
-          <Counter>777 tweets</Counter>
-          <Counter>100,500 Followers</Counter>
+          <Counter>{tweets} tweets</Counter>
+          <Counter>{followers} Followers</Counter>
         </CounterList>
 
         <Button>Follow</Button>
