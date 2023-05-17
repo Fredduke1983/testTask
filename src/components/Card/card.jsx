@@ -9,18 +9,18 @@ import {
   ImgLogo,
   Line,
 } from './card.styled';
-import logo from './img/logoGoit.png';
-import bg from './img/bgpicture.png';
-import line from './img/centerLine.png';
-import boy from './img/boy.png';
+// import logo from './img/logoGoit.png';
+// import bg from './img/bgpicture.png';
+// import line from './img/centerLine.png';
+// import boy from './img/boy.png';
 
 export const Card = () => {
   return (
     <CardBody>
-      <ImgLogo src={logo} />
-      <BgPicture src={bg} />
-      <Line src={line} />
-      <Boy src={boy} />
+      <ImgLogo src="./img/logoGoit.png" />
+      <BgPicture src="./img/bgpicture.png" />
+      <Line src="./img/centerLine.png" />
+      <Boy src="./img/boy.png" />
       <CardFooter>
         <CounterList>
           <Counter>777 tweets</Counter>
