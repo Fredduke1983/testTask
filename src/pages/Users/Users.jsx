@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
+
 import { Card } from '../../components/Card/OneCard';
 import { getUsers } from '../../utils/fetches';
 import { LoadMore, UsersStyle } from './Users.styled';
-
-let page = 1;
-const LIMIT = 3;
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [isFollows, setIsFollows] = useState(
     localStorage.getItem('user') ? localStorage.getItem('user').split(',') : []
   );
+  const [page, setpage] = useState(1);
 
   const changeFollowers = data => {
     if (isFollows.includes(data.id)) {
@@ -36,9 +35,10 @@ function Users() {
 
   useEffect(() => {
     if (users.length < 1) {
-      getUsers(page, LIMIT).then(({ data }) => {
+      getUsers(page).then(({ data }) => {
         setUsers(data);
       });
+      setpage(2);
     }
 
     localStorage.setItem('user', [isFollows]);
@@ -49,19 +49,20 @@ function Users() {
         }
       }
     });
-  }, [isFollows, users, users.length]);
+  }, [isFollows, page, users, users.length]);
 
   const handleOnMore = () => {
-    page += 1;
-    getUsers(page, LIMIT).then(({ data }) => {
+    let p = page;
+    getUsers(page).then(({ data }) => {
       if (data.length !== 0) {
         setUsers([...users, ...data]);
+        setpage((p += 1));
       } else {
         console.log('NO MORE');
       }
     });
   };
-
+  console.log('users=', users);
   return (
     <>
       <UsersStyle>

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 import {
   BgPicture,
@@ -38,7 +40,7 @@ const Card = ({
     const body = JSON.stringify({
       followers: followersToString.toString(),
     });
-
+    console.log(tweets);
     changeFollowers({
       user,
       tweets,
@@ -54,11 +56,16 @@ const Card = ({
       <ImgLogo src={logo} />
       <BgPicture src={bg} />
       <LineStyle src={line} />
+
       <Avatar src={avatar} />
-      <FrameCircle src={frame} />
+
+      <NavLink to={`/tweets/${id}`}>
+        <FrameCircle src={frame} />
+      </NavLink>
+
       <CardFooter>
         <CounterList>
-          <Counter>{tweets.toLocaleString('en')} tweets</Counter>
+          <Counter>{tweets.length.toLocaleString('en')} tweets</Counter>
           <Counter>{followers.toLocaleString('en')} Followers</Counter>
         </CounterList>
 
@@ -76,7 +83,7 @@ export { Card };
 
 Card.propTypes = {
   avatar: PropTypes.string,
-  tweets: PropTypes.string,
+  tweets: PropTypes.array,
   followers: PropTypes.number,
   id: PropTypes.string,
   isFollows: PropTypes.array,

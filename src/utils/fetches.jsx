@@ -1,15 +1,21 @@
 import axios from 'axios';
 
-// const url = new URL(
-//   'https://6452a61dbce0b0a0f74cb532.mockapi.io/contacts/users/?page=2&limit=2'
-// );
-
 axios.defaults.baseURL =
   'https://6452a61dbce0b0a0f74cb532.mockapi.io/contacts/users/';
 
-export const getUsers = async (page, limit) => {
+export const getUsers = async page => {
+  const LIMIT = 3;
+
   try {
-    return await axios(`?page=${page}&limit=${limit}`);
+    return await axios(`?page=${page}&limit=${LIMIT}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUserById = async id => {
+  try {
+    return await axios(id);
   } catch (error) {
     console.log(error);
   }
