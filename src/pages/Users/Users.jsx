@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Card } from '../../components/Card/OneCard';
 import { getUsers } from '../../utils/fetches';
-import { UsersStyle } from './Users.styled';
+import { LoadMore, UsersStyle } from './Users.styled';
+
+let page = 1;
+const LIMIT = 3;
 
 function Users() {
   const [users, setUsers] = useState([]);
-  const [localUsers, setLocalUsers] = useState([]);
   const [isFollows, setIsFollows] = useState(
     localStorage.getItem('user') ? localStorage.getItem('user').split(',') : []
   );
@@ -34,7 +36,7 @@ function Users() {
 
   useEffect(() => {
     if (users.length < 1) {
-      getUsers().then(({ data }) => {
+      getUsers(page, LIMIT).then(({ data }) => {
         setUsers(data);
       });
     }
@@ -48,6 +50,17 @@ function Users() {
       }
     });
   }, [isFollows, users, users.length]);
+
+  const handleOnMore = () => {
+    page += 1;
+    getUsers(page, LIMIT).then(({ data }) => {
+      if (data.length !== 0) {
+        setUsers([...users, ...data]);
+      } else {
+        console.log('NO MORE');
+      }
+    });
+  };
 
   return (
     <>
@@ -68,6 +81,7 @@ function Users() {
             );
           })}
       </UsersStyle>
+      <LoadMore onClick={handleOnMore}>Load More</LoadMore>
     </>
   );
 }

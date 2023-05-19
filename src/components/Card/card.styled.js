@@ -10,7 +10,7 @@ const CardBody = styled.div`
     #5736a3 54.28%,
     #4b2a99 78.99%
   );
-  box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
+  box-shadow: -3px 7px 21px rgba(0, 0, 0, 0.23);
   border-radius: 20px;
 `;
 
@@ -88,31 +88,12 @@ const Counter = styled.li`
   min-width: 220px;
 `;
 
-const BtnFollow = styled.button`
+const Btn = styled.button`
   display: block;
   margin: 26px auto 36px auto;
   width: 196px;
   height: 50px;
-  background: #ebd8ff;
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  cursor: pointer;
-
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  text-transform: uppercase;
-  color: #373737;
-`;
-
-const BtnFollowing = styled.button`
-  display: block;
-  margin: 26px auto 36px auto;
-  width: 196px;
-  height: 50px;
-  background: #ebd8ff;
+  background: ${props => (props.children === 'Follow' ? '#ebd8ff' : '#5CD3A8')};
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   cursor: pointer;
@@ -136,6 +117,5 @@ export {
   Counter,
   CounterList,
   Avatar,
-  BtnFollow,
-  BtnFollowing,
+  Btn,
 };

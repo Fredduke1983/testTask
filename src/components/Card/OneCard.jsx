@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import {
   BgPicture,
   FrameCircle,
-  BtnFollow,
-  BtnFollowing,
+  Btn,
   CardBody,
   CardFooter,
   Counter,
@@ -59,14 +58,14 @@ const Card = ({
       <FrameCircle src={frame} />
       <CardFooter>
         <CounterList>
-          <Counter>{tweets} tweets</Counter>
-          <Counter>{followers} Followers</Counter>
+          <Counter>{tweets.toLocaleString('en')} tweets</Counter>
+          <Counter>{followers.toLocaleString('en')} Followers</Counter>
         </CounterList>
 
         {isFollowing ? (
-          <BtnFollow onClick={handleOnClick}>Follow</BtnFollow>
+          <Btn onClick={handleOnClick}>Following</Btn>
         ) : (
-          <BtnFollowing onClick={handleOnClick}>Following</BtnFollowing>
+          <Btn onClick={handleOnClick}>Follow</Btn>
         )}
       </CardFooter>
     </CardBody>
