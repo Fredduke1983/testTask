@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   BgPicture,
   FrameCircle,
@@ -16,13 +17,37 @@ import logo from './img/logoGoit.png';
 import bg from './img/bgpicture.png';
 import line from './img/centerLine.png';
 import frame from './img/frame.png';
+import { setUserFollowers } from '../../utils/fetches';
+const Card = ({
+  avatar,
+  tweets,
+  followers,
+  id,
+  changeFollowers,
+  user,
+  isFollows,
+}) => {
+  const [isFollowing, setIsFollowing] = useState(isFollows.includes(id));
 
-const Cards = ({ avatar, tweets, followers, id }) => {
-  const [isFollowing, setIsFollowing] = useState(false);
+  const handleOnClick = () => {
+    let followersToString = 0;
+    isFollowing
+      ? (followersToString = followers - 1)
+      : (followersToString = followers + 1);
 
-  const handleOnClick = e => {
     setIsFollowing(!isFollowing);
-    console.log(id);
+    const body = JSON.stringify({
+      followers: followersToString.toString(),
+    });
+
+    changeFollowers({
+      user,
+      tweets,
+      followers: followersToString.toString(),
+      avatar,
+      id,
+    });
+    setUserFollowers(id, body);
   };
 
   return (
@@ -48,4 +73,14 @@ const Cards = ({ avatar, tweets, followers, id }) => {
   );
 };
 
-export { Cards };
+export { Card };
+
+Card.propTypes = {
+  avatar: PropTypes.string,
+  tweets: PropTypes.string,
+  followers: PropTypes.number,
+  id: PropTypes.string,
+  isFollows: PropTypes.array,
+  changeFollowers: PropTypes.func,
+  user: PropTypes.string,
+};
