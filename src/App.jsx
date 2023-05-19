@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home/Home';
 import Users from './pages/Users/Users';
-import { Tweets } from './pages/Tweets';
+import { Tweets } from './pages/Tweets/Tweets';
 
 function App() {
   return (

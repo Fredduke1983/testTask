@@ -62,7 +62,7 @@ function Users() {
       }
     });
   };
-  console.log('users=', users);
+
   return (
     <>
       <UsersStyle>
