@@ -1,11 +1,25 @@
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import { getUserById } from '../../utils/fetches';
 import { useEffect, useState } from 'react';
-import { TweetterAvatar, TweetterList, TweetterStyle } from './Tweets.styled';
+import {
+  TweetsTitle,
+  TweetterAvatar,
+  TweetterBackArrow,
+  TweetterDesc,
+  TweetterItem,
+  TweetterList,
+  TweetterName,
+  TweetterRightSide,
+  TweetterStyle,
+  TweetterText,
+  TweetterTitle,
+} from './Tweets.styled';
+import { AiOutlineRollback } from 'react-icons/ai';
 
 export const Tweets = () => {
   const { id } = useParams();
   const [tweetter, setTweetter] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     if (!id) return;
@@ -15,22 +29,29 @@ export const Tweets = () => {
     });
   }, [id]);
 
-  console.log(tweetter);
-
   return (
     tweetter && (
       <TweetterStyle>
-        <TweetterAvatar src={tweetter.avatar} />
-        <p>{tweetter.user}</p>
+        <TweetterBackArrow to={location.state}>
+          <AiOutlineRollback style={{ width: '40px', height: '40px' }} />
+          <p>back</p>
+        </TweetterBackArrow>
 
-        <p>
-          He has {tweetter.followers} followers, and {tweetter.tweets.length}{' '}
-          tweets
-        </p>
+        <TweetterTitle>Tweetter Info</TweetterTitle>
+        <TweetterDesc>
+          <TweetterAvatar src={tweetter.avatar} />
+          <TweetterRightSide>
+            <TweetterName>{tweetter.user}</TweetterName>
+            <TweetterText>
+              He has {tweetter.followers} followers, and{' '}
+              {tweetter.tweets.length} tweets
+            </TweetterText>
+          </TweetterRightSide>
+        </TweetterDesc>
         <TweetterList>
-          Tweets
+          <TweetsTitle>Tweets</TweetsTitle>
           {tweetter.tweets.map(el => {
-            return <li key={el}> &quot;{el}&quot;</li>;
+            return <TweetterItem key={el}> &quot;{el}&quot;</TweetterItem>;
           })}
         </TweetterList>
       </TweetterStyle>

@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const Header = styled.header`
-  padding: 30px;
+  padding: 20px;
   margin-bottom: 20px;
   background-color: #00000005;
   box-shadow: 0px 1px 4px black;
 `;
 
 const HeaderList = styled.ul`
+  font-size: 20px;
   display: flex;
   gap: 20px;
   a {

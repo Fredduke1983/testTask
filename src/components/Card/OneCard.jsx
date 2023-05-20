@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import {
@@ -19,6 +19,7 @@ import bg from './img/bgpicture.png';
 import line from './img/centerLine.png';
 import frame from './img/frame.png';
 import { setUserFollowers } from '../../utils/fetches';
+
 const Card = ({
   avatar,
   tweets,
@@ -29,7 +30,7 @@ const Card = ({
   isFollows,
 }) => {
   const [isFollowing, setIsFollowing] = useState(isFollows.includes(id));
-
+  const location = useLocation();
   const handleOnClick = () => {
     let followersToString = 0;
     isFollowing
@@ -40,7 +41,6 @@ const Card = ({
     const body = JSON.stringify({
       followers: followersToString.toString(),
     });
-    console.log(tweets);
     changeFollowers({
       user,
       tweets,
@@ -59,7 +59,7 @@ const Card = ({
 
       <Avatar src={avatar} />
 
-      <NavLink to={`/tweets/${id}`}>
+      <NavLink state={location} to={`/tweets/${id}`}>
         <FrameCircle src={frame} />
       </NavLink>
 
