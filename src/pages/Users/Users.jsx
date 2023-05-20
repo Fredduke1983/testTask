@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-
+import PropTypes from 'prop-types';
 import { Card } from '../../components/Card/OneCard';
 import { getUsers } from '../../utils/fetches';
 import { LoadMore, UsersStyle } from './Users.styled';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function Users() {
+function Users({ toggleIsLoading }) {
   const [users, setUsers] = useState([]);
   const [isFollows, setIsFollows] = useState(
     localStorage.getItem('user') ? localStorage.getItem('user').split(',') : []
@@ -35,8 +37,10 @@ function Users() {
 
   useEffect(() => {
     if (users.length < 1) {
+      toggleIsLoading(true);
       getUsers(page).then(({ data }) => {
         setUsers(data);
+        toggleIsLoading(false);
       });
       setpage(2);
     }
@@ -49,22 +53,38 @@ function Users() {
         }
       }
     });
-  }, [isFollows, page, users, users.length]);
+  }, [isFollows, page, toggleIsLoading, users, users.length]);
 
   const handleOnMore = () => {
     let p = page;
+    toggleIsLoading(true);
+
     getUsers(page).then(({ data }) => {
       if (data.length !== 0) {
         setUsers([...users, ...data]);
         setpage((p += 1));
+        toggleIsLoading(false);
       } else {
-        console.log('NO MORE');
+        toast('No more tweetters');
+        toggleIsLoading(false);
       }
     });
   };
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="dark"
+      />
       <UsersStyle>
         {users &&
           users.map(user => {
@@ -88,3 +108,7 @@ function Users() {
 }
 
 export default Users;
+
+Users.propTypes = {
+  toggleIsLoading: PropTypes.func,
+};
